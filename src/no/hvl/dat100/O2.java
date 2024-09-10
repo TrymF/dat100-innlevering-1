@@ -7,13 +7,23 @@ public class O2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        for (int i = 1; i <= 10; i++) {
-            System.out.print("Oppgi poengsum til student nmr " + i + ": ");
-            int n = scanner.nextInt();
+        // Lar bruker selv sette hvor mange studenter som skal få karakter
+        System.out.print("Oppgi antall studenter du skal sette karakter til: ");
+        int antallStudenter = scanner.nextInt();
+
+        for (int i = 1; i <= antallStudenter; i++) {
+            int n;
+
+            do {
+                System.out.print("Oppgi poengsum til student nmr " + i + ": ");
+                n = scanner.nextInt();
+                
+                if (n < 0 || n > 100) {
+                    System.out.println("Ugyldig, karakter skalaen går mellom 0-100. Prøv igjen.");
+                }
+            } while (n < 0 || n > 100); 
             
-            if (n < 0 || n > 100) {
-                System.out.println("Ugyldig, karakter skalaen går mellom 0-100");
-            } else if (n <= 39) {
+            if (n <= 39) {
                 System.out.println("Ved poengsum: " + n + ", får student nmr " + i + " karakteren F");
             } else if (n <= 49) {
                 System.out.println("Ved poengsum: " + n + ", får student nmr " + i + " karakteren E");
